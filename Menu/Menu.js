@@ -9,6 +9,58 @@ let menuItems = [
   'Log Out'
 ];
 
+// Step 1:
+// Write a function that will create a menu component as seen below:
+const menuCreator = (array) => {
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+  
+  // Add Classes
+  menu.classList.add('menu')
+
+  // Step 2: 
+  // Inside this function, iterate over the array creating a list item <li> element for each item in the array. Add those items to the <ul>
+  array.forEach(element => {
+    console.log('Array values:', element);
+    // Creating the li
+    let lineItem = document.createElement('li');
+    // Add each index's value to the li
+    lineItem.textContent = element;
+    console.log('lineItem inside forEach:', lineItem);
+    // Adds each line item to the ul
+    list.appendChild(lineItem);
+  });
+
+ 
+  // Structuring the new elements
+  menu.appendChild(list);
+ 
+
+  // Step 3: 
+  // Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
+  const menuButton = document.querySelector('.menu-button');
+  console.log('menuButton:', menuButton);
+
+  // Step 4:
+  //  add a click event listener to the menu button. When clicked it should toggle the class 'menu--open' on the menu (your div with a 'menu' class).
+  menuButton.addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  });
+
+  // Step 5:
+  // return the menu component.
+  console.log('menu:', menu);
+  return menu;
+}
+
+// Step 6:
+// add the menu component to the DOM.
+const menuContainer = document.querySelector('.header');
+menuContainer.prepend(menuCreator(menuItems));
+
+
+console.log('menuCreator:', menuCreator(menuItems));
+
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
